@@ -1,0 +1,47 @@
+{
+  "name": "ng-validator",
+  "version": "1.0.0",
+  "description": "Angular (>= 2) validators. it is a very easy way to use and validate formControls, arrayControls and Files, this package gives support to input files for reactive forms",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf dist && tsc && cp package.json dist && cp README.md dist"
+  },
+  "keywords": [
+    "validator",
+    "angular",
+    "validator",
+    "angular",
+    "4",
+    "validators",
+    "ng-validators",
+    "ng-validator",
+    "ng2-validators",
+    "validation",
+    "file",
+    "control"
+  ],
+  "author": "Insomniocode <insomniocode@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lugriz/ng-validator"
+  },
+  "bugs": {
+    "email": "insomniocode@gmail.com",
+    "url": "https://github.com/Lugriz/ng-validator/issues"
+  },
+  "homepage": "https://github.com/Lugriz/ng-validator",
+  "dependencies": {
+    "@angular/core": "^5.2.9",
+    "@angular/forms": "5.2.9"
+  },
+  "devDependencies": {
+    "@angular/compiler": "^5.2.9",
+    "@angular/compiler-cli": "^5.2.9",
+    "rollup": "^0.57.1",
+    "rxjs": "^5.5.7",
+    "typescript": "^2.7.2",
+    "zone.js": "^0.8.20"
+  }
+}
