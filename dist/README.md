@@ -581,6 +581,8 @@ It validates that the height of a image be as maximum to specified value.
 ```
 
 ### Issues
-
+```
+    https://github.com/Lugriz/ng-validator/issues
+```
 
 
