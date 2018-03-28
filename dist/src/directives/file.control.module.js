@@ -9,13 +9,13 @@ import { FileValueAccessor } from './file-control.directive';
 var FileControlModule = (function () {
     function FileControlModule() {
     }
-    FileControlModule = __decorate([
-        NgModule({
-            declarations: [FileValueAccessor],
-            exports: [FileValueAccessor]
-        })
-    ], FileControlModule);
     return FileControlModule;
 }());
+FileControlModule = __decorate([
+    NgModule({
+        declarations: [FileValueAccessor],
+        exports: [FileValueAccessor]
+    })
+], FileControlModule);
 export { FileControlModule };
 //# sourceMappingURL=file.control.module.js.map

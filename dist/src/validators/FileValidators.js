@@ -211,14 +211,14 @@ var FileValidators = (function () {
             }
         });
     };
-    FileValidators.typeSize = {
-        'B': 1,
-        'KB': 1000,
-        'MB': 1e6,
-        'GB': 1e9,
-        'TB': 1e12,
-    };
     return FileValidators;
 }());
 export { FileValidators };
+FileValidators.typeSize = {
+    'B': 1,
+    'KB': 1000,
+    'MB': 1e6,
+    'GB': 1e9,
+    'TB': 1e12,
+};
 //# sourceMappingURL=FileValidators.js.map

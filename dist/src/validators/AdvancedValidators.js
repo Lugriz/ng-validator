@@ -86,8 +86,8 @@ var AdvancedValidators = (function () {
             });
         }
     };
-    AdvancedValidators._listeners = {};
     return AdvancedValidators;
 }());
 export { AdvancedValidators };
+AdvancedValidators._listeners = {};
 //# sourceMappingURL=AdvancedValidators.js.map

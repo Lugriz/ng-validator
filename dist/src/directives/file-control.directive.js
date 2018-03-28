@@ -6,29 +6,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { Directive } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-var FileValueAccessor = (function () {
+var FileValueAccessor = FileValueAccessor_1 = (function () {
     function FileValueAccessor() {
         this.onChange = function (_) { };
         this.onTouched = function () { };
     }
-    FileValueAccessor_1 = FileValueAccessor;
     FileValueAccessor.prototype.writeValue = function (value) { };
     FileValueAccessor.prototype.registerOnChange = function (fn) { this.onChange = fn; };
     FileValueAccessor.prototype.registerOnTouched = function (fn) { this.onTouched = fn; };
-    FileValueAccessor = FileValueAccessor_1 = __decorate([
-        Directive({
-            selector: "input[type=file]",
-            host: {
-                "(change)": "onChange($event.target.files)",
-                "(blur)": "onTouched()"
-            },
-            providers: [
-                { provide: NG_VALUE_ACCESSOR, useExisting: FileValueAccessor_1, multi: true }
-            ]
-        })
-    ], FileValueAccessor);
     return FileValueAccessor;
-    var FileValueAccessor_1;
 }());
+FileValueAccessor = FileValueAccessor_1 = __decorate([
+    Directive({
+        selector: "input[type=file]",
+        host: {
+            "(change)": "onChange($event.target.files)",
+            "(blur)": "onTouched()"
+        },
+        providers: [
+            { provide: NG_VALUE_ACCESSOR, useExisting: FileValueAccessor_1, multi: true }
+        ]
+    })
+], FileValueAccessor);
 export { FileValueAccessor };
+var FileValueAccessor_1;
 //# sourceMappingURL=file-control.directive.js.map
