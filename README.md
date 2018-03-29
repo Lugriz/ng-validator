@@ -19,6 +19,14 @@ A set of Angular (>=2) validators with support on input files in reactiveforms, 
 * [AdvancedValidators](#AdvancedValidators)
 * [FileValidators](#FileValidators)
 
+These classes will only import them into the componets to use. For example:
+
+```javascript
+    // you can import the components to use
+
+    import { CommonValidators, ArrayValidators } from 'ng-validator';
+```
+
 
 ### CommonValidators
 
@@ -142,12 +150,12 @@ It validates a field to starts with `X` value in the string.
     });
 
     /*
-        If the input starts with "Hello world", the validator evaluates as correct.
+        If the input starts with "Hello", the validator evaluates as correct.
     */
 ```
 
 #### endsWith
-It validates a field to starts with `X` value in the string.
+It validates a field to ends with `X` value in the string.
 
 ```javascript
     // Example
@@ -157,7 +165,7 @@ It validates a field to starts with `X` value in the string.
     });
 
     /*
-        If the input ends with "Hello world", the validator evaluates as correct.
+        If the input ends with "world", the validator evaluates as correct.
     */
 ```
 
@@ -493,7 +501,7 @@ Label | value | description
 ------|-------|------------
    B  |   1   | 1 Byte
    KB |  1000 | 1000 Bytes
-   MG |  1e6  | 1e6 Bytes
+   MB |  1e6  | 1e6 Bytes
    GB |  1e9  | 1e9 Bytes
    TB |  1e12 | 1e12 Bytes
 

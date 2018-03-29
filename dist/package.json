@@ -1,6 +1,6 @@
 {
   "name": "ng-validator",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Angular (>= 2) validators. it is a very easy way to use and validate formControls, arrayControls and Files, this package gives support to input files for reactive forms",
   "main": "dist/index.js",
   "scripts": {
