@@ -37,7 +37,7 @@ var AdvancedValidators = (function () {
             return parent.get(field) ? null : { requirePresentField: true };
         };
     };
-    AdvancedValidators.requireFieldValid = function (field, keyListener) {
+    AdvancedValidators.requireValidField = function (field, keyListener) {
         var _this = this;
         if (keyListener === void 0) { keyListener = ''; }
         return function (control) {
@@ -47,7 +47,7 @@ var AdvancedValidators = (function () {
             if (!parent.get(field))
                 throw new Error("The control " + field + " not exists.");
             _this.checkHasListener(control, parent.get(field), keyListener);
-            return parent.get(field).valid ? null : { requireFieldValid: true };
+            return parent.get(field).valid ? null : { requireValidField: true };
         };
     };
     AdvancedValidators.destroyListener = function (key) {
@@ -86,8 +86,8 @@ var AdvancedValidators = (function () {
             });
         }
     };
+    AdvancedValidators._listeners = {};
     return AdvancedValidators;
 }());
 export { AdvancedValidators };
-AdvancedValidators._listeners = {};
 //# sourceMappingURL=AdvancedValidators.js.map

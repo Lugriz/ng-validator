@@ -73,7 +73,7 @@ var FileValidators = (function () {
             for (var _i = 0, files_3 = files; _i < files_3.length; _i++) {
                 var f = files_3[_i];
                 if (!(f instanceof File))
-                    return;
+                    return null;
                 if (f.size > size)
                     return {
                         maxSize: {
@@ -89,12 +89,16 @@ var FileValidators = (function () {
     };
     FileValidators.maxFiles = function (max) {
         return function (control) {
+            if (!(control.value instanceof FileList))
+                return null;
             var files = control.value || [];
             return files.length > max ? { maxFiles: true } : null;
         };
     };
     FileValidators.minFiles = function (min) {
         return function (control) {
+            if (!(control.value instanceof FileList))
+                return null;
             var files = control.value || [];
             return files.length < min ? { minFiles: true } : null;
         };
@@ -105,10 +109,10 @@ var FileValidators = (function () {
             return _this.checkWidthImage(control, min, 'min');
         };
     };
-    FileValidators.asyncMaxWidthImage = function (min) {
+    FileValidators.asyncMaxWidthImage = function (max) {
         var _this = this;
         return function (control) {
-            return _this.checkWidthImage(control, min);
+            return _this.checkWidthImage(control, max);
         };
     };
     FileValidators.asyncMinHeightImage = function (min) {
@@ -117,10 +121,10 @@ var FileValidators = (function () {
             return _this.checkHeightImage(control, min, 'min');
         };
     };
-    FileValidators.asyncMaxHeightImage = function (min) {
+    FileValidators.asyncMaxHeightImage = function (max) {
         var _this = this;
         return function (control) {
-            return _this.checkHeightImage(control, min);
+            return _this.checkHeightImage(control, max);
         };
     };
     FileValidators.checkWidthImage = function (control, size, compare) {
@@ -131,7 +135,7 @@ var FileValidators = (function () {
             var counterfileVerify = 0;
             var _loop_1 = function (f) {
                 if (!(f instanceof File))
-                    return { value: void 0 };
+                    return { value: null };
                 var type = f.type.split('/');
                 if (type[0] !== 'image')
                     return { value: resolve((_a = {}, _a[prop] = { errMsg: 'It is not a image.' }, _a)) };
@@ -175,7 +179,7 @@ var FileValidators = (function () {
             var counterfileVerify = 0;
             var _loop_2 = function (f) {
                 if (!(f instanceof File))
-                    return { value: void 0 };
+                    return { value: null };
                 var type = f.type.split('/');
                 if (type[0] !== 'image')
                     return { value: resolve((_a = {}, _a[prop] = { errMsg: 'It is not a image.' }, _a)) };
@@ -211,14 +215,14 @@ var FileValidators = (function () {
             }
         });
     };
+    FileValidators.typeSize = {
+        'B': 1,
+        'KB': 1024,
+        'MB': 1048576,
+        'GB': 1073741824,
+        'TB': 1099511627776
+    };
     return FileValidators;
 }());
 export { FileValidators };
-FileValidators.typeSize = {
-    'B': 1,
-    'KB': 1000,
-    'MB': 1e6,
-    'GB': 1e9,
-    'TB': 1e12,
-};
 //# sourceMappingURL=FileValidators.js.map

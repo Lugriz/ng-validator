@@ -8,9 +8,9 @@ export declare class FileValidators {
     static maxFiles(max: number): ValidatorFn | any;
     static minFiles(min: number): ValidatorFn | any;
     static asyncMinWidthImage(min: number): AsyncValidatorFn | any;
-    static asyncMaxWidthImage(min: number): AsyncValidatorFn | any;
+    static asyncMaxWidthImage(max: number): AsyncValidatorFn | any;
     static asyncMinHeightImage(min: number): AsyncValidatorFn | any;
-    static asyncMaxHeightImage(min: number): AsyncValidatorFn | any;
+    static asyncMaxHeightImage(max: number): AsyncValidatorFn | any;
     private static checkWidthImage(control, size, compare?);
     private static checkHeightImage(control, size, compare?);
 }

@@ -1,8 +1,8 @@
 import { ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 export declare class CommonValidators {
     static requiredTrim(control: AbstractControl): ValidationErrors;
-    static greaterThan(toCompare: number, orEquals?: boolean): ValidatorFn;
-    static lessThan(toCompare: number, orEquals?: boolean): ValidatorFn;
+    static greaterThan(toCompare: number | string, orEquals?: boolean): ValidatorFn;
+    static lessThan(toCompare: number | string, orEquals?: boolean): ValidatorFn;
     static equalsTo(toCompare: number | string, strict?: boolean): ValidatorFn;
     static differentTo(toCompare: number | string, strict?: boolean): ValidatorFn;
     static contains(seed: string): ValidatorFn;

@@ -2,7 +2,8 @@ var CommonValidators = (function () {
     function CommonValidators() {
     }
     CommonValidators.requiredTrim = function (control) {
-        return control.value.trim() ? null : { requiredTrim: true };
+        var val = control.value || '';
+        return val.trim() ? null : { requiredTrim: true };
     };
     CommonValidators.greaterThan = function (toCompare, orEquals) {
         if (orEquals === void 0) { orEquals = false; }
@@ -34,17 +35,20 @@ var CommonValidators = (function () {
     };
     CommonValidators.contains = function (seed) {
         return function (control) {
-            return (control.value.indexOf(seed) != -1) || !control.value ? null : { contains: true };
+            var val = control.value || '';
+            return val.includes(seed) || !val ? null : { contains: true };
         };
     };
     CommonValidators.startsWith = function (seed) {
         return function (control) {
-            return control.value.startsWith(seed) || !control.value ? null : { startsWith: true };
+            var val = control.value || '';
+            return val.startsWith(seed) || !val ? null : { startsWith: true };
         };
     };
     CommonValidators.endsWith = function (seed) {
         return function (control) {
-            return control.value.endsWith(seed) || !control.value ? null : { endsWith: true };
+            var val = control.value || '';
+            return val.endsWith(seed) || !val ? null : { endsWith: true };
         };
     };
     CommonValidators.isNumber = function (control) {

@@ -4,7 +4,7 @@ export declare class AdvancedValidators {
     static equalsToField(field: string, keyListener?: string): ValidatorFn;
     static differentToField(field: string, keyListener?: string): ValidatorFn;
     static requirePresentField(field: string): ValidatorFn;
-    static requireFieldValid(field: string, keyListener?: string): ValidatorFn;
+    static requireValidField(field: string, keyListener?: string): ValidatorFn;
     static destroyListener(key: string): void;
     static destroyListeners(): void;
     static listListeners(): any;

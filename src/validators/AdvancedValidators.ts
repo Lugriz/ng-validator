@@ -48,7 +48,7 @@ export class AdvancedValidators {
     }
 
     // check if the field is valid
-    public static requireFieldValid(field: string, keyListener: string = ''): ValidatorFn {
+    public static requireValidField(field: string, keyListener: string = ''): ValidatorFn {
         return (control: AbstractControl) => {
             if (!control.parent) return null;
             const parent = control.parent;
@@ -57,7 +57,7 @@ export class AdvancedValidators {
 
             this.checkHasListener(control, parent.get( field ), keyListener);
 
-            return parent.get( field ).valid ? null : { requireFieldValid: true };
+            return parent.get( field ).valid ? null : { requireValidField: true };
         }
     }
 

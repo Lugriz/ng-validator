@@ -23,7 +23,7 @@ var ArrayValidators = (function () {
             return control.length < min || control.length > max ? { betweenLength: true } : null;
         };
     };
-    ArrayValidators.equalsToSomeElementInGroup = function (key, toCompare, strict) {
+    ArrayValidators.equalsToSomeGroupKey = function (key, toCompare, strict) {
         if (strict === void 0) { strict = false; }
         return function (control) {
             if (!(control instanceof FormArray))
@@ -31,12 +31,12 @@ var ArrayValidators = (function () {
             for (var _i = 0, _a = control.value; _i < _a.length; _i++) {
                 var item = _a[_i];
                 if (!item[key] && typeof item[key] === 'undefined')
-                    return { equalsToSomeElementInGroup: true, err: 'Property invalid' };
+                    return { equalsToSomeGroupKey: true, err: 'Property invalid' };
                 var condition = strict ? item[key] === toCompare : item[key] == toCompare;
                 if (condition)
                     return null;
             }
-            return { equalsToSomeElementInGroup: true };
+            return { equalsToSomeGroupKey: true };
         };
     };
     ArrayValidators.equalsToSomeElement = function (toCompare, strict) {
@@ -53,16 +53,28 @@ var ArrayValidators = (function () {
             return { equalsToSomeElement: true };
         };
     };
-    ArrayValidators.keyExistsInElements = function (key) {
+    ArrayValidators.keyExistsInGroups = function (key) {
         return function (control) {
             if (!(control instanceof FormArray))
                 return;
             for (var _i = 0, _a = control.value; _i < _a.length; _i++) {
                 var item = _a[_i];
                 if (!item[key])
-                    return { keyExists: true, item: item };
+                    return { keyExistsInGroups: true, item: item };
             }
             return null;
+        };
+    };
+    ArrayValidators.keyExistsInAtLeastOneGroup = function (key) {
+        return function (control) {
+            if (!(control instanceof FormArray))
+                return;
+            for (var _i = 0, _a = control.value; _i < _a.length; _i++) {
+                var item = _a[_i];
+                if (item[key])
+                    return null;
+            }
+            return { keyExistsInAtLeastOneGroup: true };
         };
     };
     return ArrayValidators;

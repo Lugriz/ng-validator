@@ -250,12 +250,12 @@ It validates a formArray to have a min and max length between `X` and `Y` number
     });
 ```
 
-#### equalsToSomeElementInGroup
+#### equalsToSomeGroupKey
 It validates a formArray that least one property into its elements contains the `X` defined value. The method receives three arguments, the property of formGroup (first), the value to compare (second) and de strict mode validation (third).
 
 ```javascript
     // Example
-    // Each element is a formGroup, but for quick example, It will contains literals objects
+    // Each element is a formGroup, but for quick example, It will contain literals objects
     let myArray = [
         {
             a: 1,
@@ -268,7 +268,7 @@ It validates a formArray that least one property into its elements contains the 
     ];
 
     this.formBuilder.group({
-        list: this.formBuilder.array( [], ArrayValidators.equalsToSomeElementInGroup('a', 4) )
+        list: this.formBuilder.array( myArray, ArrayValidators.equalsToSomeGroupKey('a', 4) )
     });
 
     /*
@@ -286,7 +286,7 @@ It validates a formArray that least one property into its elements contains the 
 
 ```javascript
     // Example
-    // Each element is a formControl, but for quick example, It will contains literals values
+    // Each element is a formControl, but for quick example, It will contain literals values
     let myArray = [
         'a',
         'b',
@@ -294,19 +294,19 @@ It validates a formArray that least one property into its elements contains the 
     ];
 
     this.formBuilder.group({
-        list: this.formBuilder.array( [], ArrayValidators.equalsToSomeElement('a') )
+        list: this.formBuilder.array( myArray, ArrayValidators.equalsToSomeElement('a') )
     });
 ```
 
 > **Note:** This validator internally evaluates in this way, `control == 17`, if you want compare `control === 17`, the method receives a second optional argument of boolean type.
 
 
-#### keyExistsInElements
-It validates a formArray by checking if contains the key specified in all elements.
+#### keyExistsInGroups
+It validates a formArray by checking if contains the key specified in all groups.
 
 ```javascript
     // Example
-    // Each element is a formGroup, but for quick example, It will contains literals objects
+    // Each element is a formGroup, but for quick example, It will contain literals objects
     let myArray = [
         {
             a: 1,
@@ -319,7 +319,29 @@ It validates a formArray by checking if contains the key specified in all elemen
     ];
 
     this.formBuilder.group({
-        list: this.formBuilder.array( [], ArrayValidators.keyExistsInElements('a') )
+        list: this.formBuilder.array( myArray, ArrayValidators.keyExistsInGroups('a') )
+    });
+```
+
+#### keyExistsInAtLeastOneGroup
+It validates a formArray by checking if contains the key specified in at least one group.
+
+```javascript
+    // Example
+    // Each element is a formGroup, but for quick example, It will contain literals objects
+    let myArray = [
+        {
+            a: 1,
+            b: 2
+        },
+        {
+            a: 4,
+            b: 8
+        }
+    ];
+
+    this.formBuilder.group({
+        list: this.formBuilder.array( myArray, ArrayValidators.keyExistsInAtLeastOneGroup('a') )
     });
 ```
 
@@ -430,7 +452,7 @@ It validates the presence of a field.
 ```
 > **Note:** The `requirePresentField` method doesn't require a listener, the reason is because when a new field is added to the form, the form is updated, therefore, all fields are updated.
 
-#### requireFieldValid
+#### requireValidField
 It validates that the current field will be valid if the specified field is valid.
 
 ```javascript
@@ -438,7 +460,7 @@ It validates that the current field will be valid if the specified field is vali
 
     this.formBuilder.group({
         email: [''],
-        confirmEmail: ['', AdvancedValidators.requireFieldValid('email')]
+        confirmEmail: ['', AdvancedValidators.requireValidField('email')]
     });
 
     /*
@@ -497,13 +519,13 @@ It validates that the field allows as minimum the specified size.
 ```
 You can specified the type of Bytes you want to use, the following list shows the posibles options, by default the second argement use 'B':
 
-Label | value | description
-------|-------|------------
-   B  |   1   | 1 Byte
-   KB |  1000 | 1000 Bytes
-   MB |  1e6  | 1e6 Bytes
-   GB |  1e9  | 1e9 Bytes
-   TB |  1e12 | 1e12 Bytes
+Label | value
+------|------------
+   B  | 1 Byte
+   KB | 1024 Bytes
+   MB | 1048576 Bytes
+   GB | 1073741824 Bytes
+   TB | 1099511627776 Bytes
 
 
 #### maxSize

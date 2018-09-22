@@ -28,19 +28,19 @@ export class ArrayValidators {
     }
 
     // compare in elements with a value, it need at least one match in a formGroup
-    public static equalsToSomeElementInGroup(key: string, toCompare: number | string, strict: boolean = false): ValidatorFn | any {
+    public static equalsToSomeGroupKey(key: string, toCompare: number | string, strict: boolean = false): ValidatorFn | any {
         return (control: AbstractControl[]) => {
             if (!(control instanceof FormArray)) return;
 
             for (let item of control.value) {
-                if (!item[ key ] && typeof item[ key ] === 'undefined') return { equalsToSomeElementInGroup: true, err: 'Property invalid' };
+                if (!item[ key ] && typeof item[ key ] === 'undefined') return { equalsToSomeGroupKey: true, err: 'Property invalid' };
 
                 const condition = strict ? item[ key ] === toCompare : item[ key ] == toCompare;
 
                 if (condition) return null;
             }
 
-            return { equalsToSomeElementInGroup: true };
+            return { equalsToSomeGroupKey: true };
         }
     }
 
@@ -60,15 +60,28 @@ export class ArrayValidators {
     }
 
     // check if key exists in all elements
-    public static keyExistsInElements(key: string): ValidatorFn | any {
+    public static keyExistsInGroups(key: string): ValidatorFn | any {
         return (control: AbstractControl[]) => {
             if (!(control instanceof FormArray)) return;
 
             for (let item of control.value) {
-                if (!item[ key ]) return { keyExists: true, item };
+                if (!item[ key ]) return { keyExistsInGroups: true, item };
             }
 
             return null;
+        }
+    }
+
+    // check if the key exists in at least one element group
+    public static keyExistsInAtLeastOneGroup(key: string): ValidatorFn | any {
+        return (control: AbstractControl[]) => {
+            if (!(control instanceof FormArray)) return;
+
+            for (let item of control.value) {
+                if (item[ key ]) return null;
+            }
+
+            return { keyExistsInAtLeastOneGroup: true };
         }
     }
 

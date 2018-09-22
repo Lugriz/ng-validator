@@ -1,22 +1,18 @@
 {
     "compilerOptions": {
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "lib": [
-            "dom",
-            "es2015"
-        ],
-        "module": "es2015",
-        "moduleResolution": "node",
-        "outDir": "dist",
-        "target": "es5",
-        "declaration": true,
-        "removeComments": true,
-        "sourceMap": true
+        "outDir": "dist", // destiny dir where the compile code will be to saved
+        "target": "es5", // compile to es5 format
+        "module": "es2015", // the form to import and export clases ,func, etc ...
+        "declaration": true, // generate declarations, this is useful for typing when you are wrinting code
+        "removeComments": true, // remove the comments in the generate code
+        "sourceMap": true, // generate a source map files, theses files are useful for any error on the code, and show it on the TS file
+        "experimentalDecorators": true, // allow decorators
+        "emitDecoratorMetadata": true, // generate metadata files
+        "lib": [ "dom", "es2015" ],
+        "moduleResolution": "node"
     },
     "angularCompilerOptions": {
-        "skipTemplateCodegen": true,
-        "skipMetadataEmit": false
+        "skipTemplateCodegen": true
     },
     "files": [
         "index.ts"

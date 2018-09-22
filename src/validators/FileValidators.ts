@@ -5,10 +5,10 @@ export class FileValidators {
 
     private static typeSize: any = {
         'B': 1,
-        'KB': 1000,
-        'MB': 1e6, // 10000
-        'GB': 1e9,
-        'TB': 1e12,
+        'KB': 1024,
+        'MB': 1048576,
+        'GB': 1073741824,
+        'TB': 1099511627776
     };
 
     // check file exists
@@ -91,7 +91,7 @@ export class FileValidators {
 
             for (let f of files) {
                 // check if the value is a file
-                if (!(f instanceof File)) return;
+                if (!(f instanceof File)) return null;
 
                 if (f.size > size) return {
                     maxSize: {
@@ -110,6 +110,7 @@ export class FileValidators {
     // check the number of files from FileList array, and validate the limit number (max)
     public static maxFiles(max: number): ValidatorFn | any {
         return (control: AbstractControl) => {
+            if ( !( control.value instanceof FileList )) return null;
             const files = control.value || [] as File[];
             return files.length > max ? { maxFiles: true } : null;
         }
@@ -118,6 +119,7 @@ export class FileValidators {
     // check the number of files from FileList array, and validate the limit number (min)
     public static minFiles(min: number): ValidatorFn | any {
         return (control: AbstractControl) => {
+            if ( !( control.value instanceof FileList )) return null;
             const files = control.value || [] as File[];
             return files.length < min ? { minFiles: true } : null;
         }
@@ -133,9 +135,9 @@ export class FileValidators {
     }
 
     // check the width of a image
-    public static asyncMaxWidthImage(min: number): AsyncValidatorFn | any {
+    public static asyncMaxWidthImage(max: number): AsyncValidatorFn | any {
         return (control: AbstractControl) => {
-            return this.checkWidthImage(control, min);
+            return this.checkWidthImage(control, max);
         }
     }
 
@@ -147,9 +149,9 @@ export class FileValidators {
     }
 
     // check the height of a image
-    public static asyncMaxHeightImage(min: number): AsyncValidatorFn | any {
+    public static asyncMaxHeightImage(max: number): AsyncValidatorFn | any {
         return (control: AbstractControl) => {
-            return this.checkHeightImage(control, min);
+            return this.checkHeightImage(control, max);
         }
     }
 
@@ -170,7 +172,7 @@ export class FileValidators {
             for (let f of files) {
 
                 // check if the value is a file
-                if (!(f instanceof File)) return;
+                if (!(f instanceof File)) return null;
 
                 let type = f.type.split('/');
 
@@ -220,7 +222,7 @@ export class FileValidators {
 
             for (let f of files) {
                 // check if the value is a file
-                if (!(f instanceof File)) return;
+                if (!(f instanceof File)) return null;
 
                 let type = f.type.split('/');
 
